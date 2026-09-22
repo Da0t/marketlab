@@ -1,0 +1,12 @@
+{
+  "url": "https://dat-marketlab.vercel.app",
+  "checks": [
+    "anonymous desktop and mobile access without login",
+    "real Java fills, visitor isolation, and deterministic replay",
+    "public thin-liquidity partial fills",
+    "responsive layout and no JavaScript exceptions"
+  ],
+  "passed": 4,
+  "browser_errors": [],
+  "authentication": "none; two fresh browser contexts"
+}

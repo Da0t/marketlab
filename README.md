@@ -1,5 +1,7 @@
 # MarketLab
 
+**[Public demo](https://dat-marketlab.vercel.app)** · [Source](https://github.com/Da0t/marketlab)
+
 A paper-trading application with a Java price/time-priority matching engine, market and limit orders, cash and share reservations, fee analysis, feed recovery, and deterministic replay.
 
 This is an independent application with its own source repository, API, UI, tests, CI, and deployment. All data and funds are synthetic.
@@ -26,3 +28,11 @@ The build downloads a checksum-pinned Temurin JDK, compiles the engine, and pack
 ## Engineering details
 
 See [MarketLab engine documentation](marketlab/README.md) and the tests for correctness guarantees and limitations.
+
+## Browser verification
+
+Install `playwright` and run `python -m playwright install chromium`, then `python scripts/check_public_browser.py --url https://dat-marketlab.vercel.app`. This checks anonymous access, visitor isolation, working workflows, and mobile layout.
+
+## Inspiration
+
+Matching-engine concepts are informed by [exchange-core](https://github.com/exchange-core/exchange-core), and inspectable market interfaces by [Perspective](https://github.com/perspective-dev/perspective). No third-party application code was copied or forked; these projects are not dependencies or affiliates.
