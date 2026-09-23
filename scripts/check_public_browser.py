@@ -44,12 +44,12 @@ def check(base):
         checks.append("public thin-liquidity partial fills")
         a.get_by_role("button",name="New session").click()
         expect(a.locator('.stats .stat').nth(2)).to_contain_text('100',timeout=30000)
-        for page in (a,b):
-            assert not page.evaluate('document.documentElement.scrollWidth > innerWidth')
-        assert not a.locator('a[data-page]').count()
         (ROOT/"artifacts"/"screenshots").mkdir(exist_ok=True)
         a.screenshot(path=str(ROOT/"artifacts"/"screenshots"/"desktop.png"),full_page=True)
         b.screenshot(path=str(ROOT/"artifacts"/"screenshots"/"mobile.png"),full_page=True)
+        for page in (a,b):
+            assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'), page.evaluate('[...document.querySelectorAll("body *")].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>e.className).slice(0,20)')
+        assert not a.locator('a[data-page]').count()
         assert not errors, errors
         checks.append("responsive layout and no JavaScript exceptions")
         browser.close()
